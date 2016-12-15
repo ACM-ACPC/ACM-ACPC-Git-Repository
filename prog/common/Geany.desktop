@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon[en_US]=geany
+Name[en_US]=Geany
+Exec=/usr/bin/geany
+Comment[en_US]=Geany Editor
+Name=Geany
+Comment=Geany Editor
+Icon=geany

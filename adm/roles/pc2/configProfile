@@ -1,0 +1,71 @@
+#!/bin/bash
+#### Check if the acmHostname is found, read it and compare to the current hostname
+### If, they are the same, dont do anything
+### If, the file is not found,this means 1st time run the PC,
+###	add to it current hostname, create the home directory and set profile settings, and if there is a backup, restore it
+### else, if it is found anad has a value different than the current,
+###	delete the home directory for the old user,
+###	And repeat the steps as the file is not found
+
+################################ Script is written by:
+############# Eng. Ahmed M. ElSayed
+###############   ahmed.elsayed@acmacpc.org
+
+################################ Script is Modified for 14.04 LTS by:
+############# Eng. Hanaa El-Jazzar
+###############   hanaa.jazzar@hotmail.com
+
+function createUserProfile {
+curHostName=`hostname`
+mkdir -p /home/$curHostName/Desktop/work
+######################## We have here to create the desktop shortcuts
+mkdir -p /home/$curHostName/.config/autostart
+cp /home/administrator/.config/autostart/set*.desktop /home/$curHostName/.config/autostart
+chmod +x /home/$curHostName/.config/autostart/set*.desktop
+chown -R $curHostName:$curHostName /home/$curHostName
+chown -R $curHostName:$curHostName /home/$curHostName/.config
+echo $curHostName > /etc/acmHostname
+### Downloading all shortcuts
+cd /home/$curHostName/Desktop
+wget http://control/prog/common/CodeBlocks.desktop
+wget http://control/prog/common/ECLipse.desktop
+wget http://control/prog/common/Geany.desktop
+wget http://control/prog/common/GEdit.desktop
+wget http://control/prog/common/Net_Beans.desktop
+wget http://control/prog/common/PC2_Team.desktop
+wget http://control/prog/common/ScoreBoard.desktop
+wget http://control/prog/common/STL_Documentation.desktop
+wget http://control/prog/common/PC2_Admin.desktop
+wget http://control/prog/common/BCompare.desktop
+wget http://control/prog/common/PC2_Server.desktop
+wget http://control/prog/common/PC2_ScoreBoard.desktop
+wget http://control/roles/pc2/Print
+chown administrator *.desktop
+chmod +rx *.desktop
+chown $curHostName Print
+chmod +x Print
+
+### Downloading needed script for running PC2 Scoreboard that through it we mount to web scoreboard
+
+### Create the html directory and change owernship t pc2
+mkdir /home/pc2/html
+chown -R pc2 /home/pc2/html
+}
+
+#### Mount a virtual directory between PC2 Scoreboard and Web Scoreboard
+mount web:/var/www/scoreboard /home/pc2/html && chown pc2:pc2 /home/pc2/html 
+####
+
+curHostName=`hostname`
+if [ ! -f /etc/acmHostname ]
+then
+	createUserProfile
+	exit 0
+fi
+oldHostName=`cat /etc/acmHostname`
+if [ $oldHostName != $curHostName ]
+then
+ rm -Rf /home/$oldHostName
+ createUserProfile
+fi
+

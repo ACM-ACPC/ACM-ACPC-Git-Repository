@@ -1,0 +1,104 @@
+#!/bin/bash
+##### To get mac address of host from dhcp file
+function getMacFromDHCP {
+OLDHOST=$1
+OLDN=`grep -rns "$OLDHOST {" /acm/adm/etc/dhcp/dhcpd.conf.hosts|cut -d":" -f1`
+OLDMACN=`expr $OLDN + 1`
+OLDMACLINE=`cat /acm/adm/etc/dhcp/dhcpd.conf.hosts | sed -n "$OLDMACN p"`
+OLDMAC=`echo $OLDMACLINE | cut -d" " -f3|sed "s/;//g"`
+echo $OLDMAC
+}
+
+############# Script to read files contents
+function getOptions {
+Message=$1
+OPT1=$2
+OPT2=$3
+CONT=1
+while [ $CONT -eq 1 ];do
+read -p "$Message" VALUE
+if [ -n $VALUE ]
+then
+if [[ $VALUE == "$OPT1" ]] || [[ $VALUE == "$OPT2" ]]
+then
+ CONT=0
+fi
+fi
+done
+echo $VALUE
+}
+
+function getValue {
+Message=$1
+DefaultValue=$2
+read -p "$Message [$DefaultValue] : "  VALUE
+if [ -n "$VALUE" ]
+then
+	echo $VALUE
+else
+	echo $DefaultValue
+fi
+}
+
+function getPC2MAC {
+cat /acm/adm/etc/pc2mac
+}
+
+function getJudgeMAC {
+cat /acm/adm/etc/judgesmac
+}
+
+function getPrintMAC {
+cat /acm/adm/etc/printmac
+}
+
+function getWebMAC {
+cat /acm/adm/etc/webmac
+}
+
+function getNoOfPCs {
+cat /acm/adm/etc/noofpc
+}
+
+function getSubnet {
+cat /acm/adm/etc/subnet
+}
+
+function getdomainname {
+cat /acm/adm/etc/domain
+}
+
+function getdocsurl {
+cat /acm/adm/etc/docsurl
+}
+function getscoreboardtitle {
+cat /acm/adm/etc/scoreboardtitle
+}
+function getscoreboardurl {
+cat /acm/adm/etc/scoreboardurl
+}
+function getsubnetmask {
+cat /acm/adm/etc/subnetmask
+}
+function getdnsservers {
+cat /acm/adm/etc/dnsservers
+}
+function getgateway {
+cat /acm/adm/etc/gateway
+}
+function getrangestart {
+cat /acm/adm/etc/rangestart
+}
+function getrangeend {
+cat /acm/adm/etc/rangeend
+}
+function getfirstserverip {
+cat /acm/adm/etc/firstserverip
+}
+function getsiteid {
+cat /acm/adm/etc/siteid
+}
+function getkeyboardlayout {
+cat /acm/adm/etc/kblayout
+}
+

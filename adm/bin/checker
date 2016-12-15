@@ -1,0 +1,118 @@
+#!/bin/bash
+#### Script with functions that checks for any thing
+function checkForBackup {
+HOSTNAME=$1
+MSG=""
+BACKUPPROC=`ssh root@$HOSTNAME "ps -ef|grep backup"|wc -l`
+       if [ $BACKUPPROC -le 0 ] ##The backup process is not running
+        then
+                MSG="$HOSTNAME has no backup process running"
+        fi
+MOUNTPOINT=`ssh root@$HOSTNAME "df -kh | grep 'web:/backup/'|wc -l"`
+        if [ $MOUNTPOINT -le 0 ]
+         then
+                MSG="$MSG\r$HOSTNAME has not backup mount point"
+         fi
+echo "$MSG"
+}
+
+function checkForConfigFiles {
+echo ""
+if [ ! -f /acm/adm/etc/configfilelist ] 
+then
+ echo "/acm/adm/etc/configfilelist"
+ exit 1
+fi
+FILES=`cat /acm/adm/etc/configfilelist`
+for f in $FILES 
+do
+ if [ ! -f /acm/adm/etc/$f ]
+ then
+   echo "$f"
+   exit 1
+ fi
+done
+}
+
+function hostIsBad {
+HOSTNAME=`echo "$1"|sed 's/team//g'`
+if [ ! -f /acm/adm/etc/badpcs ]
+then
+ echo "2"
+else
+ EXIST=`grep "^$HOSTNAME$" /acm/adm/etc/badpcs|wc -l`
+ if [ $EXIST -ge 1 ]
+ then
+  echo "1"
+ else
+  echo "0"
+ fi
+fi
+}
+
+function checkHostNIS {
+HOSTNAME=$1
+RES=`ssh root@$HOSTNAME "id $HOSTNAME" 2>/dev/null|wc -l`
+if [ $RES -ge 1 ]
+then
+	echo "1"
+else
+	echo "0"
+fi
+}
+
+function checkHostNetBeans {
+HOSTNAME=$1
+RES=`ssh root@$HOSTNAME "ls -l /usr/local/netbeans-8.0.2/bin/netbeans" 2>/dev/null | wc -l`
+if [ $RES -ge 1 ]
+then
+	echo "1"
+else
+	echo "0"
+fi
+
+}
+
+function checkHostName {
+HOSTNAME=$1
+RES=`ssh root@$HOSTNAME "hostname"`
+if [ $HOSTNAME != $RES ]
+then
+ echo "0"
+else
+ echo "1"
+fi
+}
+
+function CheckHostInstallation {
+HOSTNAME=$1
+ERR=0
+NISV=`checkHostNIS $HOSTNAME`
+MSG=""
+if [ $NISV -le 0 ]
+then
+	MSG="1:No NIS"
+	ERR=1
+fi
+
+NETBEANS=`checkHostNetBeans $HOSTNAME`
+if [ $NETBEANS -le 0 ]
+then
+	MSG="1:$MSG , NO Net beans"
+        ERR=1
+fi
+
+HOSTNAMEM=`checkHostName $HOSTNAME`
+if [ $HOSTNAMEM -eq 0 ]
+then
+	MSG="1:$MSG , Hostname not match"
+	ERR=1
+fi
+
+if [ $ERR -eq 0 ]
+then
+echo "0:NOMSG"
+else
+echo "$MSG"
+fi
+}

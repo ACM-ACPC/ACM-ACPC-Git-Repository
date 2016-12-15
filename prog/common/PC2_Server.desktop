@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon[en_US]=gnome-panel-launcher
+Name[en_US]=PC2 Server
+Exec=/usr/local/pc2/bin/pc2server --ini /usr/local/pc2/pc2v9.ini
+Comment[en_US]=PC2 Server
+Name=PC2 Server
+Comment=PC2 Server
+Icon=gnome-panel-launcher

@@ -1,0 +1,3 @@
+kill -9 `ps -ef | grep "/usr/lib/jvm/default-java/bin/java" | head -1 | awk '{print $2}'`
+rm -Rf ./.cache/netbeans
+rm -Rf ./.netbeans

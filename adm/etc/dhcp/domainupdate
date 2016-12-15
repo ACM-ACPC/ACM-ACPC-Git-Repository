@@ -1,0 +1,4 @@
+zone acmacpc.org {
+        primary 127.0.0.1;
+        key dhcpupdate;
+}

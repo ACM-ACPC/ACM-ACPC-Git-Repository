@@ -1,0 +1,3 @@
+#!/bin/bash
+/acm/adm/bin/resetTeams
+/acm/adm/bin/resetServers
