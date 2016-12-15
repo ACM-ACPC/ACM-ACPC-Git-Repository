@@ -1,0 +1,17 @@
+#!/bin/bash
+source /acm/adm/bin/checker
+source /acm/adm/bin/getSettings
+N=`getNoOfPCs`
+for i in `seq 1 $N`
+do
+HOST="team$i"
+HN="$1"
+if [ `hostIsBad $HN` -eq 0 ]
+then
+ echo "Cleaning $HOST"
+ echo "         *Cleaning home directory,acmHostname, and any related files"
+ sudo ssh root@$HOST "rm -Rf /home/$HOST /etc/acmHostname;find /tmp -user $HOST -exec rm {} \;" > /dev/null 2>&1
+ echo "         *Cleaning the backup directory"
+ sudo ssh root@web "rm -Rf /backup/$HOST/*" > /dev/null 2>&1
+fi
+done

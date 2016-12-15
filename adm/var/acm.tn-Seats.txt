@@ -1,0 +1,37 @@
+1	the challengers
+2	Freeways Champions
+3	ISGST1
+4	ESPRIT Team 2
+5	AMA Engineers
+6	Sup'Hackers
+7	ISIGK
+8	ESPRIT Team 1
+9	Geeks FST
+10	Sup'Coders
+11	Geeks
+12	ENSIT.NET
+13	Hannibal
+14	Freeways Challengers
+15	Elissa
+16	ISAMM1
+17	ESPRIT TEAM 3
+18	TPS_Champions
+19	Team404
+20	victory
+21	FLY-HIGH
+22	IsetCom-GES
+23	UIT_TEAM
+24	FSM TopCoders
+25	Wizards
+26	League of programmers
+27	Barakuda
+28	Serenity
+29	ISGST2
+30	IsetCom-MMI
+31	ISAMM2
+32	ENIG-GCR
+33	Jaguar
+34	Hello World!
+35	ADA-WIS
+36	ISAMM3
+37	Ambition

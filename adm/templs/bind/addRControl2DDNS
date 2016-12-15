@@ -1,0 +1,4 @@
+server localhost
+zone #REVERSESUBNET#.in-addr.arpa.
+update add #HOSTIP#.#REVERSESUBNET#.in-addr.arpa. 30600 PTR #HOSTFQDN#.
+send	

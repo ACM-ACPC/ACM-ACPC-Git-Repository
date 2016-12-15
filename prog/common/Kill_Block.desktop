@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Kill CodeBlocks
+Comment=Kill CodeBlocks
+Exec=/usr/sbin/killBlock 
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Application;

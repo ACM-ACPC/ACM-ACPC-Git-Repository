@@ -1,0 +1,6 @@
+#!/bin/bash
+##### Script to reboot all teams
+source /acm/adm/bin/resetutil
+source /acm/adm/bin/getSettings
+NOOFPCS=`getNoOfPCs`
+resetLoop "team" $NOOFPCS

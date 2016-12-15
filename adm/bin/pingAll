@@ -1,0 +1,3 @@
+#!/bin/bash
+/acm/adm/bin/pingTeams
+/acm/adm/bin/pingServers
