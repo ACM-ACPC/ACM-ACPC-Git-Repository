@@ -1,4 +1,4 @@
-zone acmacpc.org {
+zone acmlcpc.lb {
         primary 127.0.0.1;
         key dhcpupdate;
 }

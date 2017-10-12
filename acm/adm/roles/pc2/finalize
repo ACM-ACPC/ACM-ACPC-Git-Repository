@@ -128,7 +128,9 @@ wget http://control/roles/pc2/summary.xsl
 mv summary.xsl /usr/local/pc2/data/xsl/summary.xsl
 
 ### 160- Add a file contains pc2 external validator
-echo '/usr/sbin/doTask {:infile} {:outfile} {:ansfile} {:resfile} {:basename} {:mainfile} {:siteid} {:timelimit} {:languageletter}' > /home/pc2/Desktop/PC2_External_Validator
+#echo '/usr/sbin/doTask {:infile} {:outfile} {:ansfile} {:resfile} {:basename} {:mainfile} {:siteid} {:timelimit} {:languageletter}' > /home/pc2/Desktop/PC2_External_Validator
+wget http://control/roles/pc2/pc2_compiling
+mv pc2_compiling /home/pc2/Desktop/PC2_External_Validator
 
 
 exit 0

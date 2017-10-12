@@ -1,5 +1,5 @@
-ddns-domainname "acmacpc.org";
+ddns-domainname "acmlcpc.lb";
 ddns-rev-domainname "16.20.172.in-addr.arpa";
 option broadcast-address 172.20.16.255;
-option domain-name "acmacpc.org";
+option domain-name "acmlcpc.lb";
 option domain-name-servers 172.20.16.2;

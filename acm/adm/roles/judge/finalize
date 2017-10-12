@@ -38,7 +38,7 @@ sudo rm authorized_keys
 ### 40- Install editors (Geany, netbeans, eclipse, codeblocks)
 
 
- apt-get -y --force-yes install geany eclipse codeblocks eclipse-cdt g++ autofs debconf-utils portmap  2> /var/log/acmPackages 
+ apt-get -y --force-yes wine dvipsk-ja texlive-binaries texlive-latex-base install geany eclipse codeblocks eclipse-cdt g++ autofs debconf-utils portmap  2> /var/log/acmPackages 
 #apt-get -y --force-yes install nis
  apt-get -y --force-yes install --no-install-recommends gnome-panel
  wget http://control/prog/common/netbeans-8.0.2-javaee-linux.sh
