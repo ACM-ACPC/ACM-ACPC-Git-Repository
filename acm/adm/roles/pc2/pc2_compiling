@@ -1,0 +1,12 @@
+Compiling options:
+g++  -g -O2 -std=gnu++11 -static -o {:basename}.exe {:mainfile}
+gcc -g -O2 -std=gnu11 -static -lm -o {:basename}.exe {:mainfile} -lm
+javac -encoding UTF-8 {:mainfile}
+
+
+Validators:
+Output validator
+Choose use custom validator
+validator program /usr/sbin/doTask
+Validator command line {:validator} {:infile} {:outfile} {:ansfile} {:resfile} {:basename} {:mainfile} {:siteid} {:timelimit} {:languagename} diff
+Validator interface user pc2 standared interface

@@ -96,7 +96,9 @@ sudo rm authorized_keys
 ### 100- Adding /backup to exportfs
  echo "/backup *(rw,no_root_squash,no_subtree_check)" >> /etc/exports
  echo "/var/www/scoreboard pc2(rw,no_root_squash,no_subtree_check)" >> /etc/exports
- N=`wc -l /adm/etc/judgesmac|awk ' { print $1 } '`
+ wget http://control/roles/webserver/Nofjudges
+ N=`wc -l Nofjudges |awk ' { print $1 } '`
+ rm Nofjudges
  for i in `seq 1 $N`
  do
    echo "/home/samples judge$i(rw,no_root_squash,no_subtree_check)">> /etc/exports

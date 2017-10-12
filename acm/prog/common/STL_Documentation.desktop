@@ -6,6 +6,6 @@ Type=Application
 Terminal=false
 Icon[en_US]=totem
 Name[en_US]=STL Documentation
-Exec=/usr/bin/firefox http://web.acmacpc.org/stldocs
+Exec=/usr/bin/firefox http://web.acmlcpc.lb/stldocs
 Name=STL Documentation
 Icon=/usr/share/pixmaps/evolution-data-server/category_hot-contacts_16.png
