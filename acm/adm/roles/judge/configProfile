@@ -14,6 +14,13 @@
 
 function createUserProfile {
 curHostName=`hostname`
+### Get the team number, so create the user with the id that is team num + 3000,
+#### so each local team account in each pc has a different uid to be suitable for permissions
+###### in the web server
+ID=`echo $curHostName|sed 's/judge//g'`
+myUID=`expr $ID + 3000`
+useradd -c "ACM Judge account" -u $myUID -g judges -m $curHostName
+
 mkdir -p /home/$curHostName/Desktop/work
 mkdir /home/$curHostName/Desktop/samples
 mkdir /home/$curHostName/Desktop/JudgeCases
@@ -30,14 +37,24 @@ wget http://control/prog/common/CodeBlocks.desktop
 wget http://control/prog/common/ECLipse.desktop
 wget http://control/prog/common/Geany.desktop
 wget http://control/prog/common/GEdit.desktop
-wget http://control/prog/common/Net_Beans.desktop
 wget http://control/prog/common/PC2_Team.desktop
+wget http://control/prog/common/PC2_Admin.desktop
+wget http://control/prog/common/PC2_Judge.desktop
 wget http://control/prog/common/ScoreBoard.desktop
 wget http://control/prog/common/STL_Documentation.desktop
-wget http://control/prog/common/PC2_Judge.desktop
+wget http://control/prog/common/Kill_Block.desktop
+wget http://control/prog/common/intellij.desktop
+wget http://control/prog/common/pycharm.desktop
 wget http://control/prog/common/BCompare.desktop
-sudo chown administrator *.desktop
 chmod +rx *.desktop
+cd /home/$curHostName
+wget http://control/prog/common/IDEs/intellij/intelliconfig.tar
+wget http://control/prog/common/IDEs/pycharm/pycharmconfig.tar
+tar xf intelliconfig.tar
+tar xf pycharmconfig.tar
+rm pycharmconfig.tar intelliconfig.tar
+chown -R $curHostName /home/$curHostName
+
 }
 
 function mountSamples {
@@ -50,7 +67,6 @@ mount -o rw web:/home/JudgeCases /home/$judgeName/Desktop/JudgeCases
 function unmountSamples {
 judgeName=$1
 umount /home/$judgeName/Desktop/samples
-
 umount /home/$judgeName/Desktop/JudgeCases
 }
 

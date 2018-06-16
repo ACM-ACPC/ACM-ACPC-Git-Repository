@@ -3,11 +3,7 @@
 #################### Written by Eng. Ahmed M. ElSayed
 ###################### ahmed.elsayed@acmacpc.org
 
-FLAG=1
 curHostName=`hostname`
-
-while [ $FLAG -eq 1 ]
-do
 if [ -d /backup/$curHostName ]
 then
  if [ -h /backup/$curHostName/cur ]
@@ -19,7 +15,5 @@ then
  ln -s /backup/$curHostName/$curDir /backup/$curHostName/cur
  cp -R /home/$curHostName/Desktop/work/* /backup/$curHostName/$curDir/work
 fi
-sleep 5m
-done
 
 

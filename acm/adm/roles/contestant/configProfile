@@ -23,7 +23,17 @@ fi
 }
 
 function createUserProfile {
+### Create the local account
+
 curHostName=`hostname`
+
+### Get the team number, so create the user with the id that is team num + 2000, 
+#### so each local team account in each pc has a different uid to be suitable for permissions
+###### in the web server
+ID=`echo $curHostName|sed 's/team//g'`
+myUID=`expr $ID + 2000`
+useradd -c "ACM Contestant account" -u $myUID -m $curHostName
+
 mkdir -p /home/$curHostName/Desktop/work
 mkdir -p /home/$curHostName/Desktop/samples
 ######################## We have here to create the desktop shortcuts
@@ -39,14 +49,20 @@ wget http://control/prog/common/CodeBlocks.desktop
 wget http://control/prog/common/ECLipse.desktop
 wget http://control/prog/common/Geany.desktop
 wget http://control/prog/common/GEdit.desktop
-wget http://control/prog/common/Net_Beans.desktop
 wget http://control/prog/common/PC2_Team.desktop
 wget http://control/prog/common/ScoreBoard.desktop
 wget http://control/prog/common/STL_Documentation.desktop
-wget http://control/prog/common/Kill_Beans.desktop
 wget http://control/prog/common/Kill_Block.desktop
-sudo chown administrator *.desktop
+wget http://control/prog/common/intellij.desktop
+wget http://control/prog/common/pycharm.desktop
 chmod +rx *.desktop
+cd /home/$curHostName
+wget http://control/prog/common/IDEs/intellij/intelliconfig.tar
+wget http://control/prog/common/IDEs/pycharm/pycharmconfig.tar
+tar xf intelliconfig.tar
+tar xf pycharmconfig.tar
+rm pycharmconfig.tar intelliconfig.tar
+chown -R $curHostName /home/$curHostName
 }
 
 function mountBackup {
@@ -75,7 +91,6 @@ teamName=$1
 umount /home/$teamName/Desktop/samples
 rm -R /home/$teamName/Desktop/samples
 }
-
 curHostName=`hostname`
 if [ ! -f /etc/acmHostname ]
 then

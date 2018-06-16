@@ -24,115 +24,89 @@ mkdir /root/.ssh
 sudo cp authorized_keys /root/.ssh
 sudo rm authorized_keys
 
-### 20- update the mirror list
-
- wget http://control/prog/common/sources.list
- cp sources.list /etc/apt
- rm sources.list
-
-
 ### 30- update the mirror list
 
  apt-get update
 
-### 40- Install editors (Geany, netbeans, eclipse, codeblocks)
-
-
- apt-get -y --force-yes wine dvipsk-ja texlive-binaries texlive-latex-base install geany eclipse codeblocks eclipse-cdt g++ autofs debconf-utils portmap  2> /var/log/acmPackages 
-#apt-get -y --force-yes install nis
+### 40- Install gnome-panel to deal with shortcuts
+	##Disable gnome-initial-setuo
+ 	apt-get -y purge gnome-initial-setup 
+ apt-get -y install autofs debconf-utils portmap Xvfb x11vn firewalld
  apt-get -y --force-yes install --no-install-recommends gnome-panel
- wget http://control/prog/common/netbeans-8.0.2-javaee-linux.sh
- sh netbeans-8.0.2-javaee-linux.sh --silent 
- wget http://control/prog/common/netbeans-8.0.2-cpp-linux.sh
- sh netbeans-8.0.2-cpp-linux.sh --silent 
- rm  netbeans-8.0.2-javaee-linux.sh
- rm  netbeans-8.0.2-cpp-linux.sh
 
 
-### 50- Disbale guest login, and change the login to manual
- echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
- echo "greeter-show-manual-login=true" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
-
-### 60- Download iptablesload script, and iptables rules files
- wget http://control/roles/judge/iptables.rules
- wget http://control/prog/common/iptablesload
- mv iptables.rules /etc/
- mv iptablesload /etc/network/if-pre-up.d
- chmod +x /etc/network/if-pre-up.d/iptablesload
+### 50-Install 3rd party IDEs
+	wget http://control//prog/common/IDEs/eclipse/eclipse-cpp-oxygen-3a-linux-gtk.tar.gz
+	wget http://control//prog/common/IDEs/eclipse/eclipse-java-oxygen-3a-linux-gtk.tar.gz
+	wget http://control//prog/common/IDEs/intellij/ideaIC-2018.1.4.tar.gz
+	wget http://control//prog/common/IDEs/pycharm/pycharm-community-2018.1.4.tar.gz
+	tar zxf eclipse-cpp-oxygen-3a-linux-gtk.tar.gz
+	tar zxf eclipse-java-oxygen-3a-linux-gtk.tar.gz
+	tar zxf ideaIC-2018.1.4.tar.gz
+	tar zxf pycharm-community-2018.1.4.tar.gz
+	mv eclipse /usr/local
+	mv idea-IC-181.5087.20 /usr/local/idea-IC
+	mv pycharm-community-2018.1.4 /usr/local/pycharm
 
 ### 70- Downloading cups configuration files
  wget http://control/prog/common/cupsd.conf
  mv cupsd.conf /etc/cups
 
-### 80- Configure nis client
-
- if [ -f /etc/yp.conf ] 
- then
-  rm /etc/yp.conf
- fi
- echo "ACMACPC" > /etc/defaultdomain
- apt-get -y --force-yes install portmap
- echo "ACMACPC" > /tmp/nis.seed
- debconf-set-selections /tmp/nis.seed
- apt-get -y --force-yes install nis
- echo "domain ACMACPC server control" > /etc/yp.conf
- wget http://control/prog/common/nis
- cp nis /etc/default/nis 
- rm nis
- wget http://control/prog/common/nsswitch.conf
- cp nsswitch.conf /etc
- rm nsswitch.conf
- update-rc.d portmap defaults
- update-rc.d ypbind defaults
- domainname ACMACPC
- ypdomainname ACMACPC
- service portmap restart
- service ypbind restart
-
- echo "+::::::" >> /etc/passwd
- echo "+::::::::" >> /etc/shadow
- echo "+:::" >> /etc/group
- ### Chancing the administrator uid to 750 .. anyid less than 1000
- usermod -u 750 administrator
- chown -R administrator /home/administrator
-
+###75- Disable what is new and welcome screen
+ wget http://control/adm/roles/judge/custom.conf
+ mv custom.conf /etc/gdm3/custom.conf
 
 ### 90- Downloading PC2, and extract it
- wget http://control/prog/common/pc2-9.3beta-3364.tar.gz
- tar zxf pc2-9.3beta-3364.tar.gz
- mv pc2-9.3beta /usr/local/
- chmod +x /usr/local/pc2-9.3beta/bin/pc2*
- cat /usr/local/pc2-9.3beta/pc2v9.ini | sed 's/localhost/pc2/g' > /tmp/pc2v9.ini
- cp /tmp/pc2v9.ini /usr/local/pc2-9.3beta/pc2v9.ini
+ wget http://control/prog/common/pc2.tar.gz
+ tar zxf pc2.tar.gz
+ REL=`ls -ld pc2-* | awk ' { print $9 } ' | cut -d'-' -f 2`
+ mv pc2-$REL /usr/local/
+ ln -s  /usr/local/pc2-$REL /usr/local/pc2
+ chmod +x /usr/local/pc2/bin/pc2*
+ cat /usr/local/pc2/pc2v9.ini | sed 's/localhost/pc2/g' > /tmp/pc2v9.ini
+ cp /tmp/pc2v9.ini /usr/local/pc2/pc2v9.ini
  rm /tmp/pc2v9.ini
- ln -s /usr/local/pc2-9.3beta /usr/local/pc2
 
-### 120- Remove #NetworkManager# from the interfaces file
- apt-get -y --force-yes remove --purge network-manager-gnome network-manager
- cat /etc/network/interfaces | sed 's/#NetworkManager#//g'  > interfaces
- cp interfaces /etc/network/interfaces
- rm interfaces
- 
+### 100- Downloading gnome-settings-daemon.desktop to set the background img
+ wget http://control/roles/judge/setbg.desktop
+ wget http://control/roles/judge/setspan.desktop
+ mkdir -p /home/administrator/.config/autostart
+ cp set*.desktop /home/administrator/.config/autostart
+ rm set*.desktop
+ chmod +x /home/administrator/.config/autostart/set*.desktop
+ #wget http://control/prog/common/bg.jpg
+ #cp bg.jpg /etc/bg.jpg
+ #rm bg.jpg
+ #####Change Login Screen Background
+ #wget http://control/prog/common/loginbg.jpg
+ #cp loginbg.jpg /etc/loginbg.jpg
+ #cp /etc/loginbg.jpg /usr/share/backgrounds/warty-final-ubuntu.png
+ #rm loginbg.jpg
+ chown -R administrator /home/administrator/*
+ chown -R administrator /home/administrator/.config
+
+
 ### 130- Get the configProfile, and addit to the startup
  wget http://control/roles/judge/configProfile
- cp configProfile /etc/init.d
- chmod +x /etc/init.d/configProfile
+ cp configProfile /etc/systemd/system
+ chmod +x /etc/systemd/system/configProfile
+ wget http://control/roles/judge/configProfile.service
+ mv configProfile.service /lib/systemd/system
+ systemctl enable configProfile.service
  rm configProfile
- cat /etc/rc.local | sed 's/exit 0/\/etc\/init.d\/configProfile/g' > rc.local 
-echo "exit 0" >> /tmp/rc.local
- cp /tmp/rc.local /etc/rc.local
- rm /tmp/rc.local
 
-### 140- Download bcompare and install it
- wget http://control/prog/common/bcompare-4.0.7.19761_i386.deb
- dpkg -i bcompare-4.0.7.19761_i386.deb
- rm bcompare-4.0.7.19761_i386.deb
 
-### 150 - Setting up environment variables
+### 140 - Setting up environment variables
 echo "SHELL=/bin/bash">>/etc/environment
 echo "export SHELL">>/etc/environment
 
-### 160 - Get the doTask, getProcess, and dos2unix scripts for External Validator
+### 141- Download bcompare and install it
+ wget http://control/prog/common/bcompare-4.2.5.23088_i386.deb
+ dpkg -i bcompare-4.2.5.23088_i386.deb
+ apt -y -f install
+ rm bcompare-4.2.5.23088_i386.deb
+
+### 150 - Get the doTask, getProcess, and dos2unix scripts for External Validator
  wget http://control/roles/judge/getProcess
  wget http://control/roles/judge/doTask
  wget http://control/roles/judge/dos2unix
@@ -140,7 +114,18 @@ echo "export SHELL">>/etc/environment
  rm getProcess doTask dos2unix
  chmod +x /usr/sbin/getProcess /usr/sbin/doTask /usr/sbin/dos2unix
 
-### 170 - Setting up umask for Judges Profile to give their created files read/write access over samples and JudgesCases
+ ### 155 - Setting up umask for Judges Profile to give their created files read/write access over samples and JudgesCases
  echo "umask=002">>/etc/profile
-  
+
+## 160- Disable NTP
+timedatectl set-ntp off
+
+### 161- Disable online upgrade check
+rm /etc/update-motd.d/91-release-upgrade
+
+### 162: Create the judges group
+groupadd -g 3000 judges
+
+rm finalize
+
 exit 0

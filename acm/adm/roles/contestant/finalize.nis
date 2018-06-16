@@ -56,6 +56,38 @@ sudo rm authorized_keys
  wget http://control/adm/roles/contestant/custom.conf
  mv custom.conf /etc/gdm3/custom.conf
 
+### 80- Configure nis client
+ if [ -f /etc/yp.conf ] 
+ then
+  rm /etc/yp.conf
+ fi
+ echo "ACMACPC" > /etc/defaultdomain
+ apt-get -y --force-yes install portmap
+ echo "ACMACPC" > /tmp/nis.seed
+ debconf-set-selections /tmp/nis.seed
+ apt-get -y --force-yes install nis
+ echo "domain ACMACPC server control" > /etc/yp.conf
+ wget http://control/prog/common/nis
+ cp nis /etc/default/nis 
+ rm nis
+ wget http://control/prog/common/nsswitch.conf
+ cp nsswitch.conf /etc
+ rm nsswitch.conf
+ systemctl enable portmap
+ systemctl enable ypbind
+ domainname ACMACPC
+ ypdomainname ACMACPC
+ systemctl restart portmap
+ systemctl restart ypbind
+
+ echo "+::::::" >> /etc/passwd
+ echo "+::::::::" >> /etc/shadow
+ echo "+:::" >> /etc/group
+ ### Chancing the administrator uid to 750 .. anyid less than 1000
+ usermod -u 750 administrator
+ chown -R administrator /home/administrator
+
+
 ### 90- Downloading PC2, and extract it
  wget http://control/prog/common/pc2.tar.gz
  tar zxf pc2.tar.gz
@@ -126,13 +158,6 @@ timedatectl set-ntp off
 ### 161- Disable online upgrade check
 rm /etc/update-motd.d/91-release-upgrade
 
-###162- Adding backupwork timer 
-wget http://control/roles/contestant/backupwork.service
-wget http://control/roles/contestant/backupwork.timer
-mv backupwork.service backupwork.timer /etc/systemd/system
-chmod +x /etc/systemd/system/backupwork.*
-systemctl enable backupwork.timer
-
-rm /finalize
+rm finalize
 
 exit 0
