@@ -1,4 +1,4 @@
-server localhost
+server #DNSSERVER#
 zone #DOMAINNAME# 
 update add #HOSTNAME#.#DOMAINNAME#. 302400 IN A #IPADD#
 send

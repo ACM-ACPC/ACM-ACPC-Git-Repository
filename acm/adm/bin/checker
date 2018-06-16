@@ -73,29 +73,6 @@ fi
 
 }
 
-function checkHomeDir {
-HOSTNAME=$1
-RES=`ssh root@$HOSTNAME "ls -ld /home/$HOSTNAME" 2>/dev/null | wc -l`
-if [ $RES -ge 1 ]
-then
-        echo "1"
-else
-        echo "0"
-fi
-}
-
-function checkHomePerm {
-HOSTNAME=$1
-OWNER=`ssh root@$HOSTNAME "ls -ld /home/$HOSTNAME" `
-PERM=`echo $OWNER|awk ' { print $3 } '`
-if [ $PERM = $HOSTNAME ]
-then
-        echo "1"
-else
-        echo "0"
-fi
-}
-
 function checkHostName {
 HOSTNAME=$1
 RES=`ssh root@$HOSTNAME "hostname"`
@@ -131,21 +108,6 @@ then
 	MSG="1:$MSG , Hostname not match"
 	ERR=1
 fi
-
-HOMEDIR=`checkHomeDir $HOSTNAME`
-if [ $HOMEDIR  -eq 0 ]
-then
-        MSG="1:$MSG , Hostname has no home dir"
-        ERR=1
-fi
-
-HOSTPERM=`checkHomePerm $HOSTNAME`
-if [ $HOSTPERM  -eq 0 ]
-then
-        MSG="1:$MSG , Hostname has no permission on home dir"
-        ERR=1
-fi
-
 
 if [ $ERR -eq 0 ]
 then

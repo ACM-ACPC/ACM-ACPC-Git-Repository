@@ -185,7 +185,7 @@ CONFFILE=`cat /acm/adm/templs/apache2/server.conf|sed -e "s/#SERVERNAME#/$SERVER
 echo "$CONFFILE" > /tmp/server.conf
 cp /tmp/server.conf /acm/adm/etc/apache2/server.conf
 rm /tmp/server.conf
-service apache2 restart
+systemctl restart apache2
 }
 
 function setBINDOptions {
@@ -217,18 +217,18 @@ RZONEFILE=`cat /acm/adm/templs/bind/BINDRZonefile|sed "s/#REVERSEDOMAINNAME#/$SU
 echo "$RZONEFILE" > /var/lib/bind/$SUBNET.in-addr.arpa
 
 ### Restarting bind service
-service bind9 restart
-
+echo "..Restarting BIND"
+systemctl restart bind9
 ### Add control server to the DDNS
 KEY=`grep secret /acm/adm/etc/bind/dhcpupdate.conf | awk ' { print $2 } ' | sed -e "s/\"//g" -e "s/;//g"`
 CONTROLIP="$oSUBNET.2"
 CONTROLHOST="control"
-ADDFILE=`cat /acm/adm/templs/bind/addControl2DDNS|sed -e "s/#DOMAINNAME#/$DOMAINNAME/g" -e "s/#HOSTNAME#/$CONTROLHOST/g" -e "s/#IPADD#/$CONTROLIP/g"`
+ADDFILE=`cat /acm/adm/templs/bind/addControl2DDNS|sed -e "s/#DNSSERVER#/$CONTROLIP/g" -e "s/#DOMAINNAME#/$DOMAINNAME/g" -e "s/#HOSTNAME#/$CONTROLHOST/g" -e "s/#IPADD#/$CONTROLIP/g"`
 echo "$ADDFILE" > /tmp/addfile
-nsupdate -y dhcpupdate:$KEY -v /tmp/addfile
-ADDRFILE=`cat /acm/adm/templs/bind/addRControl2DDNS|sed -e "s/#HOSTFQDN#/$CONTROLHOST/g" -e "s/#REVERSESUBNET#/$SUBNET/g" -e "s/#HOSTIP#/2/g"`
+nsupdate -y dhcpupdate:$KEY -v /tmp/addfile 
+ADDRFILE=`cat /acm/adm/templs/bind/addRControl2DDNS|sed -e "s/#DNSSERVER#/$CONTROLIP/g" -e "s/#HOSTFQDN#/$CONTROLHOST/g" -e "s/#REVERSESUBNET#/$SUBNET/g" -e "s/#HOSTIP#/2/g"`
 echo "$ADDRFILE" > /tmp/addrfile
-nsupdate -y dhcpupdate:$KEY -v /tmp/addrfile
+nsupdate -y dhcpupdate:$KEY -v /tmp/addrfile 
 rm /tmp/addfile
 rm /tmp/addrfile
 
@@ -333,13 +333,16 @@ rm /tmp/*host
 rm /tmp/*hosts
 ### Configure IP  for the control server
 CIP="$oSUBNET.2"
-INFS=`cat /acm/adm/templs/interfaces | sed -e "s/#CONTROLIP#/$CIP/g" -e "s/#SUBNET#/255.255.255.0/g" -e "s/#DOMAINNAME#/$DOMAINNAME/g"`
-echo "$INFS" > /tmp/interfaces
-cp /tmp/interfaces /etc/network/interfaces
-/etc/init.d/networking restart
-rm  /tmp/interfaces
+#INFS=`cat /acm/adm/templs/interfaces | sed -e "s/#CONTROLIP#/$CIP/g" -e "s/#SUBNET#/255.255.255.0/g" -e "s/#DOMAINNAME#/$DOMAINNAME/g"`
+nmcli con mod Internal ipv4.dns-search $DOMAINNAME
+nmcli con mod Internal ipv4.addresses $CIP/24
+#echo "$INFS" > /tmp/interfaces
+#cp /tmp/interfaces /etc/network/interfaces
+#/etc/init.d/networking restart
+#rm  /tmp/interfaces
 ### Restarting DHCP service
-service isc-dhcp-server restart
+nmcli con up Internal
+systemctl restart  isc-dhcp-server
 
 }
 
