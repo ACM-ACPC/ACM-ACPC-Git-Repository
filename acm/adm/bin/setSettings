@@ -121,9 +121,27 @@ rm /tmp/iptables.rules
 
 function setTeamFirewall {
 oSUBNET=`getSubnet`
-CONTROLIP="$oSUBNET.2"
-IPT=`cat /acm/adm/templs/iptables.rules.team| sed "s/#CONTROLIP#/$CONTROLIP/g
-"`
+CONTROLIP=`host control| cut -d' ' -f4`
+PC2IP=`getIPFromDHCP pc2`
+WEBIP=`getIPFromDHCP web`
+N=`cat /acm/adm/etc/printmac|wc -l`
+if [ $N -eq 1 ]
+then
+        PRINTSERVERNAME="print"
+        PRINTIP=`getIPFromDHCP print`
+	LASTOCTET=`echo $PRINTIP| cut -d'.' -f4`
+	ENDIP="${oSUBNET}.${LASTOCTET}"
+	echo "$PRINTIP to $ENDIP"
+else
+	PRINTSERVERNAME="print1"
+        PRINTIP=`getIPFromDHCP $PRINTSERVERNAME`
+	N=`expr $N - 1`
+        LASTOCTET=`echo $PRINTIP| cut -d'.' -f4`
+	LASTOCTET=`expr $LASTOCTET + $N`
+        ENDIP="${oSUBNET}.${LASTOCTET}"
+fi
+
+IPT=`cat /acm/adm/templs/iptables.rules.team| sed -e "s/#WEBSERVER#/$WEBIP/g" -e "s/#PRINTSTART#/$PRINTIP/g"  -e "s/#PRINTEND#/$ENDIP/g" -e "s/#CONTROLSERVER#/$CONTROLIP/g" -e "s/#PC2SERVER#/$PC2IP/g"`
 echo "$IPT" > /tmp/iptables.rules
 cp /tmp/iptables.rules /acm/adm/roles/contestant/iptables.rules
 rm /tmp/iptables.rules
