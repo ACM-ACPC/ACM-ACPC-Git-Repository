@@ -2,6 +2,18 @@
 ############# Script to read files contents
 source /acm/adm/bin/getSettings
 
+function setHostPassword {
+if [ ! $# -eq 2 ] 
+then
+	exit 1
+fi
+HOST=$1
+PASSWORD=$2
+HPASS=`openssl passwd -1 $PASSWORD`
+ssh root@$HOST "usermod -p '${HPASS}' $HOST"
+}
+
+
 function setDenyAccess {
 CONFFILE=$1
 echo "Order deny,allow" > /acm/adm/etc/apache2/$CONFFILE
