@@ -31,7 +31,7 @@ sudo rm authorized_keys
 ### 40- Install gnome-panel to deal with shortcuts
 	##Disable gnome-initial-setuo
  	apt-get -y purge gnome-initial-setup 
- apt-get -y install autofs debconf-utils portmap Xvfb x11vn firewalld
+ apt-get -y install autofs debconf-utils x11vnc firewalld
  apt-get -y --force-yes install --no-install-recommends gnome-panel
 
 
@@ -119,6 +119,12 @@ echo "export SHELL">>/etc/environment
 chmod o-x /usr/bin/x11vnc
 chmod o-x /usr/bin/x11perf     
 chmod o-x /usr/bin/x11perfcomp
+
+#151- Download firewalld direct rules, as permanent 
+wget http://control/roles/contestant/iptables.rules
+chmod +x iptables.rules
+./iptables.rules
+rm iptables.rules
 
 ## 160- Disable NTP
 timedatectl set-ntp off
