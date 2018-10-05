@@ -18,13 +18,13 @@ echo "$MSG"
 
 function checkForConfigFiles {
 echo ""
-if [ ! -f /acm/adm/etc/configfilelist ] 
+if [ ! -f /acm/adm/etc/configfilelist ]
 then
  echo "/acm/adm/etc/configfilelist"
  exit 1
 fi
 FILES=`cat /acm/adm/etc/configfilelist`
-for f in $FILES 
+for f in $FILES
 do
  if [ ! -f /acm/adm/etc/$f ]
  then
@@ -55,9 +55,9 @@ HOSTNAME=$1
 RES=`ssh root@$HOSTNAME "id $HOSTNAME" 2>/dev/null|wc -l`
 if [ $RES -ge 1 ]
 then
-	echo "1"
+        echo "1"
 else
-	echo "0"
+        echo "0"
 fi
 }
 
@@ -66,16 +66,16 @@ HOSTNAME=$1
 RES=`ssh root@$HOSTNAME "ls -l /usr/local/netbeans-8.0.2/bin/netbeans" 2>/dev/null | wc -l`
 if [ $RES -ge 1 ]
 then
-	echo "1"
+        echo "1"
 else
-	echo "0"
+        echo "0"
 fi
 
 }
 
 function checkHomeDir {
 HOSTNAME=$1
-RES=`ssh root@$HOSTNAME "ls -ld /home/$HOSTNAME" 2>/dev/null | wc -l`
+RES=`ssh root@$HOSTNAME "ls -ld /home/$HOSTNAME/Desktop/*.desktop" 2>/dev/null | wc -l`
 if [ $RES -ge 1 ]
 then
         echo "1"
@@ -114,28 +114,28 @@ NISV=`checkHostNIS $HOSTNAME`
 MSG=""
 if [ $NISV -le 0 ]
 then
-	MSG="1:No NIS"
-	ERR=1
+        MSG="1:No NIS"
+        ERR=1
 fi
 
 NETBEANS=`checkHostNetBeans $HOSTNAME`
 if [ $NETBEANS -le 0 ]
 then
-	MSG="1:$MSG , NO Net beans"
+        MSG="1:$MSG , NO Net beans"
         ERR=1
 fi
 
 HOSTNAMEM=`checkHostName $HOSTNAME`
 if [ $HOSTNAMEM -eq 0 ]
 then
-	MSG="1:$MSG , Hostname not match"
-	ERR=1
+        MSG="1:$MSG , Hostname not match"
+        ERR=1
 fi
 
 HOMEDIR=`checkHomeDir $HOSTNAME`
 if [ $HOMEDIR  -eq 0 ]
 then
-        MSG="1:$MSG , Hostname has no home dir"
+        MSG="1:$MSG , Hostname has no shortcuts in home directory"
         ERR=1
 fi
 
