@@ -1,259 +1,1099 @@
 host team1 {
-	hardware ethernet d4:3d:7e:13:72:f3;
+	hardware ethernet 00:50:56:2a:db:88;
 	fixed-address 172.20.16.100;
 	option host-name "team1";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team1";
 }
 host team2 {
-	hardware ethernet d4:3d:7e:13:72:2c;
+	hardware ethernet 00:50:56:35:A9:1C;
 	fixed-address 172.20.16.101;
 	option host-name "team2";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team2";
 }
 host team3 {
-	hardware ethernet d4:3d:7e:13:72:3a;
+	hardware ethernet 74:D4:35:C9:69:EF;
 	fixed-address 172.20.16.102;
 	option host-name "team3";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team3";
 }
 host team4 {
-	hardware ethernet d4:3d:7e:13:73:13;
+	hardware ethernet 74:D4:35:CA:58:57;
 	fixed-address 172.20.16.103;
 	option host-name "team4";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team4";
 }
-host team29 {
-	hardware ethernet d4:3d:7e:13:73:0e;
-	fixed-address 172.20.16.128;
-	option host-name "team29";
-	option domain-name "acmlcpc.lb";
-	ddns-hostname "team29";
+host team5 {
+	hardware ethernet 74:D4:35:C9:71:E5;
+	fixed-address 172.20.16.104;
+	option host-name "team5";
+	option domain-name "acm.alex";
+	ddns-hostname "team5";
 }
 host team6 {
-	hardware ethernet d4:3d:7e:1d:46:1d;
+	hardware ethernet 74:D4:35:C9:70:2C;
 	fixed-address 172.20.16.105;
 	option host-name "team6";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team6";
 }
 host team7 {
-	hardware ethernet d4:3d:7e:13:73:03;
+	hardware ethernet 74:D4:35:C2:80:2F;
 	fixed-address 172.20.16.106;
 	option host-name "team7";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team7";
 }
 host team8 {
-	hardware ethernet d4:3d:7e:1d:47:73;
+	hardware ethernet 74:D4:35:C9:71:51;
 	fixed-address 172.20.16.107;
 	option host-name "team8";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team8";
 }
 host team9 {
-	hardware ethernet d4:3d:7e:1d:47:07;
+	hardware ethernet 74:D4:35:C2:7F:F8;
 	fixed-address 172.20.16.108;
 	option host-name "team9";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team9";
 }
 host team10 {
-	hardware ethernet d4:3d:7e:13:72:2e;
+	hardware ethernet 74:D4:35:C2:76:70;
 	fixed-address 172.20.16.109;
 	option host-name "team10";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team10";
 }
 host team11 {
-	hardware ethernet d4:3d:7e:13:72:ac;
+	hardware ethernet 74:D4:35:C2:76:25;
 	fixed-address 172.20.16.110;
 	option host-name "team11";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team11";
 }
 host team12 {
-	hardware ethernet d4:3d:7e:14:9e:4d;
+	hardware ethernet 74:D4:35:C2:75:81;
 	fixed-address 172.20.16.111;
 	option host-name "team12";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team12";
 }
 host team13 {
-	hardware ethernet d4:3d:7e:13:73:4b;
+	hardware ethernet 74:D4:35:CA:54:FE;
 	fixed-address 172.20.16.112;
 	option host-name "team13";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team13";
 }
 host team14 {
-	hardware ethernet d4:3d:7e:13:72:a2;
+	hardware ethernet 74:D4:35:CA:55:B2;
 	fixed-address 172.20.16.113;
 	option host-name "team14";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team14";
 }
 host team15 {
-	hardware ethernet d4:3d:7e:13:73:12;
+	hardware ethernet 74:D4:35:C9:6F:EF;
 	fixed-address 172.20.16.114;
 	option host-name "team15";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team15";
 }
 host team16 {
-	hardware ethernet d4:3d:7e:14:98:b9;
+	hardware ethernet 74:D4:35:C2:7D:EC;
 	fixed-address 172.20.16.115;
 	option host-name "team16";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team16";
 }
 host team17 {
-	hardware ethernet d4:3d:7e:13:72:3b;
+	hardware ethernet 74:D4:35:CA:58:DE;
 	fixed-address 172.20.16.116;
 	option host-name "team17";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team17";
 }
 host team18 {
-	hardware ethernet d4:3d:7e:13:72:f2;
+	hardware ethernet 74:D4:35:C9:70:75;
 	fixed-address 172.20.16.117;
 	option host-name "team18";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team18";
 }
 host team19 {
-	hardware ethernet d4:3d:7e:14:9d:ab;
+	hardware ethernet 74:D4:35:C2:7F:EE;
 	fixed-address 172.20.16.118;
 	option host-name "team19";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team19";
 }
 host team20 {
-	hardware ethernet d4:3d:7e:1d:46:17;
+	hardware ethernet 74:D4:35:C2:81:7B;
 	fixed-address 172.20.16.119;
 	option host-name "team20";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team20";
 }
 host team21 {
-	hardware ethernet d4:3d:7e:13:73:0b;
+	hardware ethernet 74:D4:35:C9:70:54;
 	fixed-address 172.20.16.120;
 	option host-name "team21";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team21";
 }
 host team22 {
-	hardware ethernet d4:3d:7e:13:72:30;
+	hardware ethernet 74:D4:35:CA:53:DB;
 	fixed-address 172.20.16.121;
 	option host-name "team22";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team22";
 }
 host team23 {
-	hardware ethernet d4:3d:7e:1d:46:e0;
+	hardware ethernet 74:D4:35:C9:6D:FC;
 	fixed-address 172.20.16.122;
 	option host-name "team23";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team23";
 }
 host team24 {
-	hardware ethernet d4:3d:7e:13:72:2a;
+	hardware ethernet 74:D4:35:C2:86:09;
 	fixed-address 172.20.16.123;
 	option host-name "team24";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team24";
 }
 host team25 {
-	hardware ethernet d4:3d:7e:14:98:23;
+	hardware ethernet 74:D4:35:C9:6C:74;
 	fixed-address 172.20.16.124;
 	option host-name "team25";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team25";
 }
 host team26 {
-	hardware ethernet d4:3d:7e:1d:46:15;
+	hardware ethernet 74:D4:35:CA:54:CA;
 	fixed-address 172.20.16.125;
 	option host-name "team26";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team26";
 }
 host team27 {
-	hardware ethernet d4:3d:7e:13:73:39;
+	hardware ethernet 74:D4:35:CA:55:2E;
 	fixed-address 172.20.16.126;
 	option host-name "team27";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team27";
 }
 host team28 {
-	hardware ethernet d4:3d:7e:1d:45:ee;
+	hardware ethernet 74:d4:35:c2:81:8b;
 	fixed-address 172.20.16.127;
 	option host-name "team28";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "team28";
 }
+host team29 {
+	hardware ethernet 74:D4:35:C9:71:E4;
+	fixed-address 172.20.16.128;
+	option host-name "team29";
+	option domain-name "acm.alex";
+	ddns-hostname "team29";
+}
+host team30 {
+	hardware ethernet 74:D4:35:CA:57:3C;
+	fixed-address 172.20.16.129;
+	option host-name "team30";
+	option domain-name "acm.alex";
+	ddns-hostname "team30";
+}
+host team31 {
+	hardware ethernet 74:D4:35:CA:55:AB;
+	fixed-address 172.20.16.130;
+	option host-name "team31";
+	option domain-name "acm.alex";
+	ddns-hostname "team31";
+}
+host team32 {
+	hardware ethernet 74:D4:35:CA:58:BE;
+	fixed-address 172.20.16.131;
+	option host-name "team32";
+	option domain-name "acm.alex";
+	ddns-hostname "team32";
+}
+host team33 {
+	hardware ethernet 74:D4:35:C2:7E:07;
+	fixed-address 172.20.16.132;
+	option host-name "team33";
+	option domain-name "acm.alex";
+	ddns-hostname "team33";
+}
+host team34 {
+	hardware ethernet 74:D4:35:C2:7D:EA;
+	fixed-address 172.20.16.133;
+	option host-name "team34";
+	option domain-name "acm.alex";
+	ddns-hostname "team34";
+}
+host team35 {
+	hardware ethernet 74:D4:35:C9:72:20;
+	fixed-address 172.20.16.134;
+	option host-name "team35";
+	option domain-name "acm.alex";
+	ddns-hostname "team35";
+}
+host team36 {
+	hardware ethernet 74:D4:35:CA:58:A5;
+	fixed-address 172.20.16.135;
+	option host-name "team36";
+	option domain-name "acm.alex";
+	ddns-hostname "team36";
+}
+host team37 {
+	hardware ethernet 74:D4:35:C9:6B:27;
+	fixed-address 172.20.16.136;
+	option host-name "team37";
+	option domain-name "acm.alex";
+	ddns-hostname "team37";
+}
+host team38 {
+	hardware ethernet 74:D4:35:C4:E8:08;
+	fixed-address 172.20.16.137;
+	option host-name "team38";
+	option domain-name "acm.alex";
+	ddns-hostname "team38";
+}
+host team39 {
+	hardware ethernet 74:D4:35:C2:86:38;
+	fixed-address 172.20.16.138;
+	option host-name "team39";
+	option domain-name "acm.alex";
+	ddns-hostname "team39";
+}
+host team40 {
+	hardware ethernet 74:D4:35:C2:81:84;
+	fixed-address 172.20.16.139;
+	option host-name "team40";
+	option domain-name "acm.alex";
+	ddns-hostname "team40";
+}
+host team41 {
+	hardware ethernet 74:D4:35:C2:81:F2;
+	fixed-address 172.20.16.140;
+	option host-name "team41";
+	option domain-name "acm.alex";
+	ddns-hostname "team41";
+}
+host team42 {
+	hardware ethernet 74:D4:35:C2:7C:BD;
+	fixed-address 172.20.16.141;
+	option host-name "team42";
+	option domain-name "acm.alex";
+	ddns-hostname "team42";
+}
+host team43 {
+	hardware ethernet 74:D4:35:C9:72:16;
+	fixed-address 172.20.16.142;
+	option host-name "team43";
+	option domain-name "acm.alex";
+	ddns-hostname "team43";
+}
+host team44 {
+	hardware ethernet 74:D4:35:CA:57:70;
+	fixed-address 172.20.16.143;
+	option host-name "team44";
+	option domain-name "acm.alex";
+	ddns-hostname "team44";
+}
+host team45 {
+	hardware ethernet 74:D4:35:C9:73:1E;
+	fixed-address 172.20.16.144;
+	option host-name "team45";
+	option domain-name "acm.alex";
+	ddns-hostname "team45";
+}
+host team46 {
+	hardware ethernet 74:D4:35:C2:81:92;
+	fixed-address 172.20.16.145;
+	option host-name "team46";
+	option domain-name "acm.alex";
+	ddns-hostname "team46";
+}
+host team47 {
+	hardware ethernet 74:D4:35:C9:72:FB;
+	fixed-address 172.20.16.146;
+	option host-name "team47";
+	option domain-name "acm.alex";
+	ddns-hostname "team47";
+}
+host team48 {
+	hardware ethernet 74:D4:35:C2:7D:A2;
+	fixed-address 172.20.16.147;
+	option host-name "team48";
+	option domain-name "acm.alex";
+	ddns-hostname "team48";
+}
+host team49 {
+	hardware ethernet 74:D4:35:CA:57:2A;
+	fixed-address 172.20.16.148;
+	option host-name "team49";
+	option domain-name "acm.alex";
+	ddns-hostname "team49";
+}
+host team50 {
+	hardware ethernet 74:D4:35:C2:7D:6D;
+	fixed-address 172.20.16.149;
+	option host-name "team50";
+	option domain-name "acm.alex";
+	ddns-hostname "team50";
+}
+host team51 {
+	hardware ethernet 74:D4:35:C8:35:8B;
+	fixed-address 172.20.16.150;
+	option host-name "team51";
+	option domain-name "acm.alex";
+	ddns-hostname "team51";
+}
+host team52 {
+	hardware ethernet 74:D4:35:CA:58:8F;
+	fixed-address 172.20.16.151;
+	option host-name "team52";
+	option domain-name "acm.alex";
+	ddns-hostname "team52";
+}
+host team53 {
+	hardware ethernet 74:D4:35:CA:55:1E;
+	fixed-address 172.20.16.152;
+	option host-name "team53";
+	option domain-name "acm.alex";
+	ddns-hostname "team53";
+}
+host team54 {
+	hardware ethernet 74:D4:35:C2:85:DA;
+	fixed-address 172.20.16.153;
+	option host-name "team54";
+	option domain-name "acm.alex";
+	ddns-hostname "team54";
+}
+host team55 {
+	hardware ethernet 74:D4:35:CA:55:C2;
+	fixed-address 172.20.16.154;
+	option host-name "team55";
+	option domain-name "acm.alex";
+	ddns-hostname "team55";
+}
+host team56 {
+	hardware ethernet 74:D4:35:C4:EB:34;
+	fixed-address 172.20.16.155;
+	option host-name "team56";
+	option domain-name "acm.alex";
+	ddns-hostname "team56";
+}
+host team57 {
+	hardware ethernet 74:D4:35:C2:7A:F0;
+	fixed-address 172.20.16.156;
+	option host-name "team57";
+	option domain-name "acm.alex";
+	ddns-hostname "team57";
+}
+host team58 {
+	hardware ethernet 74:D4:35:C9:73:A5;
+	fixed-address 172.20.16.157;
+	option host-name "team58";
+	option domain-name "acm.alex";
+	ddns-hostname "team58";
+}
+host team59 {
+	hardware ethernet 74:D4:35:C2:7D:61;
+	fixed-address 172.20.16.158;
+	option host-name "team59";
+	option domain-name "acm.alex";
+	ddns-hostname "team59";
+}
+host team60 {
+	hardware ethernet 74:D4:35:CA:59:11;
+	fixed-address 172.20.16.159;
+	option host-name "team60";
+	option domain-name "acm.alex";
+	ddns-hostname "team60";
+}
+host team61 {
+	hardware ethernet 74:D4:35:CA:59:28;
+	fixed-address 172.20.16.160;
+	option host-name "team61";
+	option domain-name "acm.alex";
+	ddns-hostname "team61";
+}
+host team62 {
+	hardware ethernet 74:D4:35:C2:86:1D;
+	fixed-address 172.20.16.161;
+	option host-name "team62";
+	option domain-name "acm.alex";
+	ddns-hostname "team62";
+}
+host team63 {
+	hardware ethernet 74:D4:35:CA:58:B5;
+	fixed-address 172.20.16.162;
+	option host-name "team63";
+	option domain-name "acm.alex";
+	ddns-hostname "team63";
+}
+host team64 {
+	hardware ethernet 74:D4:35:CA:59:81;
+	fixed-address 172.20.16.163;
+	option host-name "team64";
+	option domain-name "acm.alex";
+	ddns-hostname "team64";
+}
+host team65 {
+	hardware ethernet 74:D4:35:C9:6C:8B;
+	fixed-address 172.20.16.164;
+	option host-name "team65";
+	option domain-name "acm.alex";
+	ddns-hostname "team65";
+}
+host team66 {
+	hardware ethernet 74:D4:35:C9:70:3B;
+	fixed-address 172.20.16.165;
+	option host-name "team66";
+	option domain-name "acm.alex";
+	ddns-hostname "team66";
+}
+host team67 {
+	hardware ethernet 74:D4:35:C2:7A:7F;
+	fixed-address 172.20.16.166;
+	option host-name "team67";
+	option domain-name "acm.alex";
+	ddns-hostname "team67";
+}
+host team68 {
+	hardware ethernet 74:D4:35:CA:57:0C;
+	fixed-address 172.20.16.167;
+	option host-name "team68";
+	option domain-name "acm.alex";
+	ddns-hostname "team68";
+}
+host team69 {
+	hardware ethernet 74:D4:35:CA:59:17;
+	fixed-address 172.20.16.168;
+	option host-name "team69";
+	option domain-name "acm.alex";
+	ddns-hostname "team69";
+}
+host team70 {
+	hardware ethernet 74:D4:35:C2:7D:11;
+	fixed-address 172.20.16.169;
+	option host-name "team70";
+	option domain-name "acm.alex";
+	ddns-hostname "team70";
+}
+host team71 {
+	hardware ethernet 74:D4:35:C9:6C:84;
+	fixed-address 172.20.16.170;
+	option host-name "team71";
+	option domain-name "acm.alex";
+	ddns-hostname "team71";
+}
+host team72 {
+	hardware ethernet 74:D4:35:69:AE:C7;
+	fixed-address 172.20.16.171;
+	option host-name "team72";
+	option domain-name "acm.alex";
+	ddns-hostname "team72";
+}
+host team73 {
+	hardware ethernet 74:D4:35:CA:5D:EA;
+	fixed-address 172.20.16.172;
+	option host-name "team73";
+	option domain-name "acm.alex";
+	ddns-hostname "team73";
+}
+host team74 {
+	hardware ethernet 74:D4:35:C9:6A:D4;
+	fixed-address 172.20.16.173;
+	option host-name "team74";
+	option domain-name "acm.alex";
+	ddns-hostname "team74";
+}
+host team75 {
+	hardware ethernet 74:D4:35:C2:80:2C;
+	fixed-address 172.20.16.174;
+	option host-name "team75";
+	option domain-name "acm.alex";
+	ddns-hostname "team75";
+}
+host team76 {
+	hardware ethernet 74:D4:35:CA:56:D4;
+	fixed-address 172.20.16.175;
+	option host-name "team76";
+	option domain-name "acm.alex";
+	ddns-hostname "team76";
+}
+host team77 {
+	hardware ethernet 74:D4:35:CA:58:5E;
+	fixed-address 172.20.16.176;
+	option host-name "team77";
+	option domain-name "acm.alex";
+	ddns-hostname "team77";
+}
+host team78 {
+	hardware ethernet 74:D4:35:C9:6C:49;
+	fixed-address 172.20.16.177;
+	option host-name "team78";
+	option domain-name "acm.alex";
+	ddns-hostname "team78";
+}
+host team79 {
+	hardware ethernet 74:D4:35:C4:EA:BC;
+	fixed-address 172.20.16.178;
+	option host-name "team79";
+	option domain-name "acm.alex";
+	ddns-hostname "team79";
+}
+host team80 {
+	hardware ethernet 74:D4:35:CA:5A:8A;
+	fixed-address 172.20.16.179;
+	option host-name "team80";
+	option domain-name "acm.alex";
+	ddns-hostname "team80";
+}
+host team81 {
+	hardware ethernet 74:D4:35:C9:6E:2C;
+	fixed-address 172.20.16.180;
+	option host-name "team81";
+	option domain-name "acm.alex";
+	ddns-hostname "team81";
+}
+host team82 {
+	hardware ethernet 74:D4:35:C9:72:9E;
+	fixed-address 172.20.16.181;
+	option host-name "team82";
+	option domain-name "acm.alex";
+	ddns-hostname "team82";
+}
+host team83 {
+	hardware ethernet 74:D4:35:C2:7F:DA;
+	fixed-address 172.20.16.182;
+	option host-name "team83";
+	option domain-name "acm.alex";
+	ddns-hostname "team83";
+}
+host team84 {
+	hardware ethernet 74:D4:35:CA:55:C4;
+	fixed-address 172.20.16.183;
+	option host-name "team84";
+	option domain-name "acm.alex";
+	ddns-hostname "team84";
+}
+host team85 {
+	hardware ethernet 74:D4:35:C4:E7:BC;
+	fixed-address 172.20.16.184;
+	option host-name "team85";
+	option domain-name "acm.alex";
+	ddns-hostname "team85";
+}
+host team86 {
+	hardware ethernet 74:D4:35:CA:57:2D;
+	fixed-address 172.20.16.185;
+	option host-name "team86";
+	option domain-name "acm.alex";
+	ddns-hostname "team86";
+}
+host team87 {
+	hardware ethernet 74:D4:35:C2:7B:4D;
+	fixed-address 172.20.16.186;
+	option host-name "team87";
+	option domain-name "acm.alex";
+	ddns-hostname "team87";
+}
+host team88 {
+	hardware ethernet 74:D4:35:C9:73:AC;
+	fixed-address 172.20.16.187;
+	option host-name "team88";
+	option domain-name "acm.alex";
+	ddns-hostname "team88";
+}
+host team89 {
+	hardware ethernet 74:D4:35:CA:55:FC;
+	fixed-address 172.20.16.188;
+	option host-name "team89";
+	option domain-name "acm.alex";
+	ddns-hostname "team89";
+}
+host team90 {
+	hardware ethernet 74:D4:35:CA:58:DD;
+	fixed-address 172.20.16.189;
+	option host-name "team90";
+	option domain-name "acm.alex";
+	ddns-hostname "team90";
+}
+host team91 {
+	hardware ethernet 74:D4:35:C2:7D:9C;
+	fixed-address 172.20.16.190;
+	option host-name "team91";
+	option domain-name "acm.alex";
+	ddns-hostname "team91";
+}
+host team92 {
+	hardware ethernet 74:D4:35:C2:80:3F;
+	fixed-address 172.20.16.191;
+	option host-name "team92";
+	option domain-name "acm.alex";
+	ddns-hostname "team92";
+}
+host team93 {
+	hardware ethernet 74:D4:35:C2:7E:A9;
+	fixed-address 172.20.16.192;
+	option host-name "team93";
+	option domain-name "acm.alex";
+	ddns-hostname "team93";
+}
+host team94 {
+	hardware ethernet 74:D4:35:CA:58:B6;
+	fixed-address 172.20.16.193;
+	option host-name "team94";
+	option domain-name "acm.alex";
+	ddns-hostname "team94";
+}
+host team95 {
+	hardware ethernet 74:D4:35:C2:75:26;
+	fixed-address 172.20.16.194;
+	option host-name "team95";
+	option domain-name "acm.alex";
+	ddns-hostname "team95";
+}
+host team96 {
+	hardware ethernet 74:D4:35:C2:81:17;
+	fixed-address 172.20.16.195;
+	option host-name "team96";
+	option domain-name "acm.alex";
+	ddns-hostname "team96";
+}
+host team97 {
+	hardware ethernet 94:DE:80:FA:17:C4;
+	fixed-address 172.20.16.196;
+	option host-name "team97";
+	option domain-name "acm.alex";
+	ddns-hostname "team97";
+}
+host team98 {
+	hardware ethernet 74:D4:35:C4:E7:13;
+	fixed-address 172.20.16.197;
+	option host-name "team98";
+	option domain-name "acm.alex";
+	ddns-hostname "team98";
+}
+host team99 {
+	hardware ethernet 74:D4:35:C9:73:CA;
+	fixed-address 172.20.16.198;
+	option host-name "team99";
+	option domain-name "acm.alex";
+	ddns-hostname "team99";
+}
+host team100 {
+	hardware ethernet 74:D4:35:C2:75:85;
+	fixed-address 172.20.16.199;
+	option host-name "team100";
+	option domain-name "acm.alex";
+	ddns-hostname "team100";
+}
+host team101 {
+	hardware ethernet 74:D4:35:CA:58:4E;
+	fixed-address 172.20.16.200;
+	option host-name "team101";
+	option domain-name "acm.alex";
+	ddns-hostname "team101";
+}
+host team102 {
+	hardware ethernet 74:D4:35:C9:6B:2E;
+	fixed-address 172.20.16.201;
+	option host-name "team102";
+	option domain-name "acm.alex";
+	ddns-hostname "team102";
+}
+host team103 {
+	hardware ethernet 74:D4:35:C9:72:12;
+	fixed-address 172.20.16.202;
+	option host-name "team103";
+	option domain-name "acm.alex";
+	ddns-hostname "team103";
+}
+host team104 {
+	hardware ethernet 74:D4:35:C2:81:DD;
+	fixed-address 172.20.16.203;
+	option host-name "team104";
+	option domain-name "acm.alex";
+	ddns-hostname "team104";
+}
+host team105 {
+	hardware ethernet 74:D4:35:C9:71:BC;
+	fixed-address 172.20.16.204;
+	option host-name "team105";
+	option domain-name "acm.alex";
+	ddns-hostname "team105";
+}
+host team106 {
+	hardware ethernet 74:D4:35:C2:80:2E;
+	fixed-address 172.20.16.205;
+	option host-name "team106";
+	option domain-name "acm.alex";
+	ddns-hostname "team106";
+}
+host team107 {
+	hardware ethernet 74:D4:35:CA:57:C1;
+	fixed-address 172.20.16.206;
+	option host-name "team107";
+	option domain-name "acm.alex";
+	ddns-hostname "team107";
+}
+host team108 {
+	hardware ethernet 74:D4:35:C9:6C:94;
+	fixed-address 172.20.16.207;
+	option host-name "team108";
+	option domain-name "acm.alex";
+	ddns-hostname "team108";
+}
+host team109 {
+	hardware ethernet 74:D4:35:C2:75:02;
+	fixed-address 172.20.16.208;
+	option host-name "team109";
+	option domain-name "acm.alex";
+	ddns-hostname "team109";
+}
+host team110 {
+	hardware ethernet 74:D4:35:C9:72:14;
+	fixed-address 172.20.16.209;
+	option host-name "team110";
+	option domain-name "acm.alex";
+	ddns-hostname "team110";
+}
+host team111 {
+	hardware ethernet 74:D4:35:C2:75:0A;
+	fixed-address 172.20.16.210;
+	option host-name "team111";
+	option domain-name "acm.alex";
+	ddns-hostname "team111";
+}
+host team112 {
+	hardware ethernet 74:D4:35:C9:71:FB;
+	fixed-address 172.20.16.211;
+	option host-name "team112";
+	option domain-name "acm.alex";
+	ddns-hostname "team112";
+}
+host team113 {
+	hardware ethernet 74:D4:35:CA:57:0D;
+	fixed-address 172.20.16.212;
+	option host-name "team113";
+	option domain-name "acm.alex";
+	ddns-hostname "team113";
+}
+host team114 {
+	hardware ethernet 74:D4:35:C2:7A:82;
+	fixed-address 172.20.16.213;
+	option host-name "team114";
+	option domain-name "acm.alex";
+	ddns-hostname "team114";
+}
+host team115 {
+	hardware ethernet 74:D4:35:C2:7D:E9;
+	fixed-address 172.20.16.214;
+	option host-name "team115";
+	option domain-name "acm.alex";
+	ddns-hostname "team115";
+}
+host team116 {
+	hardware ethernet 74:D4:35:C9:72:E8;
+	fixed-address 172.20.16.215;
+	option host-name "team116";
+	option domain-name "acm.alex";
+	ddns-hostname "team116";
+}
+host team117 {
+	hardware ethernet 74:D4:35:C2:81:B1;
+	fixed-address 172.20.16.216;
+	option host-name "team117";
+	option domain-name "acm.alex";
+	ddns-hostname "team117";
+}
+host team118 {
+	hardware ethernet 74:D4:35:C2:7C:0A;
+	fixed-address 172.20.16.217;
+	option host-name "team118";
+	option domain-name "acm.alex";
+	ddns-hostname "team118";
+}
+host team119 {
+	hardware ethernet 74:D4:35:CA:58:EB;
+	fixed-address 172.20.16.218;
+	option host-name "team119";
+	option domain-name "acm.alex";
+	ddns-hostname "team119";
+}
+host team120 {
+	hardware ethernet 74:D4:35:CA:55:36;
+	fixed-address 172.20.16.219;
+	option host-name "team120";
+	option domain-name "acm.alex";
+	ddns-hostname "team120";
+}
+host team121 {
+	hardware ethernet 74:D4:35:C9:6B:A6;
+	fixed-address 172.20.16.220;
+	option host-name "team121";
+	option domain-name "acm.alex";
+	ddns-hostname "team121";
+}
+host team122 {
+	hardware ethernet 74:D4:35:C9:73:4D;
+	fixed-address 172.20.16.221;
+	option host-name "team122";
+	option domain-name "acm.alex";
+	ddns-hostname "team122";
+}
+host team123 {
+	hardware ethernet 74:D4:35:C2:7D:DB;
+	fixed-address 172.20.16.222;
+	option host-name "team123";
+	option domain-name "acm.alex";
+	ddns-hostname "team123";
+}
+host team124 {
+	hardware ethernet 74:D4:35:CA:58:B8;
+	fixed-address 172.20.16.223;
+	option host-name "team124";
+	option domain-name "acm.alex";
+	ddns-hostname "team124";
+}
+host team125 {
+	hardware ethernet 74:D4:35:C9:6B:5C;
+	fixed-address 172.20.16.224;
+	option host-name "team125";
+	option domain-name "acm.alex";
+	ddns-hostname "team125";
+}
+host team126 {
+	hardware ethernet 74:D4:35:C9:6C:8E;
+	fixed-address 172.20.16.225;
+	option host-name "team126";
+	option domain-name "acm.alex";
+	ddns-hostname "team126";
+}
+host team127 {
+	hardware ethernet 74:D4:35:CA:58:9F;
+	fixed-address 172.20.16.226;
+	option host-name "team127";
+	option domain-name "acm.alex";
+	ddns-hostname "team127";
+}
+host team128 {
+	hardware ethernet 74:D4:35:C2:7B:FF;
+	fixed-address 172.20.16.227;
+	option host-name "team128";
+	option domain-name "acm.alex";
+	ddns-hostname "team128";
+}
+host team129 {
+	hardware ethernet 74:D4:35:CA:58:5A;
+	fixed-address 172.20.16.228;
+	option host-name "team129";
+	option domain-name "acm.alex";
+	ddns-hostname "team129";
+}
+host team130 {
+	hardware ethernet 74:D4:35:CA:58:BD;
+	fixed-address 172.20.16.229;
+	option host-name "team130";
+	option domain-name "acm.alex";
+	ddns-hostname "team130";
+}
+host team131 {
+	hardware ethernet 74:D4:35:C9:6A:D9;
+	fixed-address 172.20.16.230;
+	option host-name "team131";
+	option domain-name "acm.alex";
+	ddns-hostname "team131";
+}
+host team132 {
+	hardware ethernet 74:D4:35:C9:70:21;
+	fixed-address 172.20.16.231;
+	option host-name "team132";
+	option domain-name "acm.alex";
+	ddns-hostname "team132";
+}
+host team133 {
+	hardware ethernet 74:D4:35:CA:5A:1C;
+	fixed-address 172.20.16.232;
+	option host-name "team133";
+	option domain-name "acm.alex";
+	ddns-hostname "team133";
+}
+host team134 {
+	hardware ethernet 74:D4:35:C4:E5:BA;
+	fixed-address 172.20.16.233;
+	option host-name "team134";
+	option domain-name "acm.alex";
+	ddns-hostname "team134";
+}
+host team135 {
+	hardware ethernet 74:D4:35:CA:58:55;
+	fixed-address 172.20.16.234;
+	option host-name "team135";
+	option domain-name "acm.alex";
+	ddns-hostname "team135";
+}
+host team136 {
+	hardware ethernet 74:D4:35:C4:E6:E7;
+	fixed-address 172.20.16.235;
+	option host-name "team136";
+	option domain-name "acm.alex";
+	ddns-hostname "team136";
+}
+host team137 {
+	hardware ethernet 74:D4:35:C2:82:13;
+	fixed-address 172.20.16.236;
+	option host-name "team137";
+	option domain-name "acm.alex";
+	ddns-hostname "team137";
+}
+host team138 {
+	hardware ethernet 74:D4:35:C9:73:27;
+	fixed-address 172.20.16.237;
+	option host-name "team138";
+	option domain-name "acm.alex";
+	ddns-hostname "team138";
+}
+host team139 {
+	hardware ethernet 74:D4:35:C2:81:0A;
+	fixed-address 172.20.16.238;
+	option host-name "team139";
+	option domain-name "acm.alex";
+	ddns-hostname "team139";
+}
+host team140 {
+	hardware ethernet 74:D4:35:CA:5D:9F;
+	fixed-address 172.20.16.239;
+	option host-name "team140";
+	option domain-name "acm.alex";
+	ddns-hostname "team140";
+}
+host team141 {
+	hardware ethernet 74:D4:35:C2:81:02;
+	fixed-address 172.20.16.240;
+	option host-name "team141";
+	option domain-name "acm.alex";
+	ddns-hostname "team141";
+}
+host team142 {
+	hardware ethernet 74:D4:35:CA:55:E7;
+	fixed-address 172.20.16.241;
+	option host-name "team142";
+	option domain-name "acm.alex";
+	ddns-hostname "team142";
+}
+host team143 {
+	hardware ethernet 74:D4:35:C9:71:59;
+	fixed-address 172.20.16.242;
+	option host-name "team143";
+	option domain-name "acm.alex";
+	ddns-hostname "team143";
+}
 host pc2 {
-	hardware ethernet d4:3d:7e:13:73:3a;
+	hardware ethernet 00:50:56:27:A5:0A;
 	fixed-address 172.20.16.10;
 	option host-name "pc2";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "pc2";
 }
 host judge1 {
-	hardware ethernet d4:3d:7e:1d:47:00;
+	hardware ethernet 00:50:56:22:4C:4A;
 	fixed-address 172.20.16.11;
 	option host-name "judge1";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "judge1";
 }
 host judge2 {
-	hardware ethernet d4:3d:7e:13:72:b0;
+	hardware ethernet 00:19:99:fb:51:7b;
 	fixed-address 172.20.16.12;
 	option host-name "judge2";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "judge2";
 }
 host judge3 {
-	hardware ethernet d4:3d:7e:1d:46:1e;
+	hardware ethernet 00:19:99:fc:17:ff;
 	fixed-address 172.20.16.13;
 	option host-name "judge3";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "judge3";
 }
 host judge4 {
-	hardware ethernet d4:3d:7e:13:73:2f;
+	hardware ethernet 00:19:99:fb:94:6d;
 	fixed-address 172.20.16.14;
 	option host-name "judge4";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "judge4";
 }
 host judge5 {
-	hardware ethernet d4:3d:7e:13:72:25;
+	hardware ethernet 00:19:99:fb:93:c8;
 	fixed-address 172.20.16.15;
 	option host-name "judge5";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "judge5";
+}
+host judge6 {
+	hardware ethernet 00:19:99:fb:51:f1;
+	fixed-address 172.20.16.16;
+	option host-name "judge6";
+	option domain-name "acm.alex";
+	ddns-hostname "judge6";
+}
+host judge7 {
+	hardware ethernet 00:19:99:fc:17:e1;
+	fixed-address 172.20.16.17;
+	option host-name "judge7";
+	option domain-name "acm.alex";
+	ddns-hostname "judge7";
+}
+host judge8 {
+	hardware ethernet 00:19:99:fb:94:67;
+	fixed-address 172.20.16.18;
+	option host-name "judge8";
+	option domain-name "acm.alex";
+	ddns-hostname "judge8";
+}
+host judge9 {
+	hardware ethernet 00:19:99:fb:4c:dc;
+	fixed-address 172.20.16.19;
+	option host-name "judge9";
+	option domain-name "acm.alex";
+	ddns-hostname "judge9";
+}
+host judge10 {
+	hardware ethernet 00:19:99:fb:94:32;
+	fixed-address 172.20.16.20;
+	option host-name "judge10";
+	option domain-name "acm.alex";
+	ddns-hostname "judge10";
 }
 host print1 {
 	hardware ethernet 00:19:99:fb:51:6b;
-	fixed-address 172.20.16.16;
+	fixed-address 172.20.16.21;
 	option host-name "print1";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "print1";
 }
 host print2 {
 	hardware ethernet 00:19:99:fb:4d:14;
-	fixed-address 172.20.16.17;
+	fixed-address 172.20.16.22;
 	option host-name "print2";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "print2";
 }
 host web {
-	hardware ethernet d4:3d:7e:1d:47:04;
-	fixed-address 172.20.16.18;
+	hardware ethernet 00:50:56:30:43:DA;
+	fixed-address 172.20.16.23;
 	option host-name "web";
-	option domain-name "acmlcpc.lb";
+	option domain-name "acm.alex";
 	ddns-hostname "web";
 }

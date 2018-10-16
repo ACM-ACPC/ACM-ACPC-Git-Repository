@@ -12,31 +12,17 @@
 ###############   ahmed.elsayed@acmacpc.org
 
 
-function restoreData {
-oldHostName=$1
-curHostName=$2
-if [ -d /backup/$oldHostName/cur ]
-then
-cp -r /backup/$oldHostName/cur/work/* /home/$curHostName/Desktop/work
-chown -R $curHostName:$curHostName /home/$curHostName/Desktop/work
-fi
-}
-
 function createUserProfile {
 curHostName=`hostname`
-mkdir -p /home/$curHostName/Desktop/work
+useradd -c "Print Server user" -m print
+mkdir /home/print/Deskto
 ######################## We have here to create the desktop shortcuts
-mkdir -p /home/$curHostName/.config/autostart
-cp /home/administrator/.config/autostart/set*.desktop /home/$curHostName/.config/autostart
-chmod +x /home/$curHostName/.config/autostart/set*.desktop
-chown -R $curHostName:$curHostName /home/$curHostName
-chown -R $curHostName:$curHostName /home/$curHostName/.config
 echo $curHostName > /etc/acmHostname
 ### Downloading all shortcuts
-cd /home/$curHostName/Desktop
+cd /home/print/Desktop
 wget http://control/prog/common/cups.desktop
-sudo chown administrator *.desktop
 chmod +rx *.desktop
+chown -R print /home/print
 }
 
 curHostName=`hostname`

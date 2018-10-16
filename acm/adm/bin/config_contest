@@ -154,8 +154,8 @@ CreateWeb
 CreatePrint
 CreatePC2
 echo "Generating accounts PC2,Shell script, and PDF file"
-perl /acm/adm/bin/genPDF.perl $NoOfPC "Cairo Session" prac
-perl /acm/adm/bin/genPDF.perl $NoOfPC "Alex Competition" comp
+perl /acm/adm/bin/genPDF.perl $NoOfPC "Practice Session" prac
+perl /acm/adm/bin/genPDF.perl $NoOfPC "Comptetion Session" comp
 chmod +x /acm/adm/var/$domainname_*_unix
 chown administrator /acm/adm/var/$domainname_*
 chmod go-rwx /acm/adm/var/$domainname_*
@@ -173,14 +173,14 @@ echo "Configuring SSH keys and services"
 ###setSSHOptions
 echo "Configuring firewall settings for all"
 setFirewallOptions
+echo "Updateing NIS"
+updateNIS
+
 echo "Permitting access to control web server virtual directory"
 setPermitAccess htaccess.conf
 setPermitAccess rolesaccess.conf
 setPermitAccess ubuntuaccess.conf
-service apache2 restart
-### Count number of judges, and write its number in the webserver direcvtory
-wc -l ../etc/judgesmac > ../roles/webserver/Nofjudges
-
+systemctl restart apache2
 
 echo "Done configuring the contest parameters"
 echo "     After installing every thing, dont forget to run prepare contest script"

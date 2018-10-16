@@ -24,66 +24,24 @@ mkdir /root/.ssh
 sudo cp authorized_keys /root/.ssh
 sudo rm authorized_keys
 
-### 20- update the mirror list
-
- wget http://control/prog/common/sources.list
- cp sources.list /etc/apt
- rm sources.list
-
-
 ### 30- update the mirror list
 
  apt-get update
 
-### 40- Install editors (Geany, netbeans, eclipse, codeblocks)
-
-
+### 40- Install gnome-panel to deal with shortcuts
+	##Disable gnome-initial-setuo
+ 	apt-get -y purge gnome-initial-setup 
+ apt-get -y install autofs debconf-utils  firewalld
  apt-get -y --force-yes install --no-install-recommends gnome-panel
 
 
-### 50- Disbale guest login, and change the login to manual
- echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
- echo "greeter-show-manual-login=true" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+### 70- Downloading cups configuration files
+ wget http://control/prog/common/cupsd.conf
+ mv cupsd.conf /etc/cups
 
-### 60- Download iptablesload script, and iptables rules files
- wget http://control/roles/printserver/iptables.rules
- wget http://control/prog/common/iptablesload
- mv iptables.rules /etc/
- mv iptablesload /etc/network/if-pre-up.d
- chmod +x /etc/network/if-pre-up.d/iptablesload
-
-### 80- Configure nis client
-
- if [ -f /etc/yp.conf ] 
- then
-  rm /etc/yp.conf
- fi
- echo "ACMACPC" > /etc/defaultdomain
- apt-get -y --force-yes install portmap
- echo "ACMACPC" > /tmp/nis.seed
- debconf-set-selections /tmp/nis.seed
- apt-get -y --force-yes install nis
- echo "domain ACMACPC server control" > /etc/yp.conf
- wget http://control/prog/common/nis
- cp nis /etc/default/nis 
- rm nis
- wget http://control/prog/common/nsswitch.conf
- cp nsswitch.conf /etc
- rm nsswitch.conf
- update-rc.d portmap defaults
- update-rc.d ypbind defaults
- domainname ACMACPC
- ypdomainname ACMACPC
- service portmap restart
- service ypbind restart
-
- echo "+::::::" >> /etc/passwd
- echo "+::::::::" >> /etc/shadow
- echo "+:::" >> /etc/group
- ### Chancing the administrator uid to 750 .. anyid less than 1000
- usermod -u 750 administrator
- chown -R administrator /home/administrator
-
+###75- Disable what is new and welcome screen
+ wget http://control/adm/roles/printserver/custom.conf
+ mv custom.conf /etc/gdm3/custom.conf
 
 ### 100- Downloading gnome-settings-daemon.desktop to set the background img
  wget http://control/roles/printserver/setbg.desktop
@@ -95,32 +53,38 @@ sudo rm authorized_keys
  wget http://control/prog/common/bg.jpg
  cp bg.jpg /etc/bg.jpg
  rm bg.jpg
+ #####Change Login Screen Background
+ wget http://control/prog/common/loginbg.jpg
+cp loginbg.jpg /etc/loginbg.jpg
+ cp /etc/loginbg.jpg /usr/share/backgrounds/warty-final-ubuntu.png
+ rm loginbg.jpg
  chown -R administrator /home/administrator/*
  chown -R administrator /home/administrator/.config
 
-### 110- Configuring the banner page:
+ ### 110- Configuring the banner page:
  cd /usr/share/cups/banners
  cp confidential confidential.original
  echo 'Job ID: {?job-id}' > confidential
  echo 'From User: {?job-originating-user-name}' >> confidential
  echo 'From Computer: {?job-originating-host-name}' >> confidential
- service cups restart
+ systemctl restart cups
  cd -
 
-### 120- Remove #NetworkManager# from the interfaces file
- apt-get -y --force-yes remove --purge network-manager-gnome network-manager
- cat /etc/network/interfaces | sed 's/#NetworkManager#//g'  > interfaces
- cp interfaces /etc/network/interfaces
- rm interfaces
- 
 ### 130- Get the configProfile, and addit to the startup
  wget http://control/roles/printserver/configProfile
- cp configProfile /etc/init.d
- chmod +x /etc/init.d/configProfile
+ cp configProfile /etc/systemd/system
+ chmod +x /etc/systemd/system/configProfile
+ wget http://control/roles/printserver/configProfile.service
+ mv configProfile.service /lib/systemd/system
+ systemctl enable configProfile.service
  rm configProfile
- cat /etc/rc.local | sed 's/exit 0/\/etc\/init.d\/configProfile/g' > rc.local
- echo "exit 0" >> /tmp/rc.local
- cp /tmp/rc.local /etc/rc.local
- rm /tmp/rc.local
+
+## 160- Disable NTP
+timedatectl set-ntp off
+
+### 161- Disable online upgrade check
+rm /etc/update-motd.d/91-release-upgrade
+
+rm /finalize
 
 exit 0

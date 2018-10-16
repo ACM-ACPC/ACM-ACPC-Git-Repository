@@ -9,6 +9,15 @@ OLDMAC=`echo $OLDMACLINE | cut -d" " -f3|sed "s/;//g"`
 echo $OLDMAC
 }
 
+function getIPFromDHCP {
+OLDHOST=$1
+OLDN=`grep -rns "$OLDHOST {" /acm/adm/etc/dhcp/dhcpd.conf.hosts|cut -d":" -f1`
+OLDMACN=`expr $OLDN + 2`
+OLDMACLINE=`cat /acm/adm/etc/dhcp/dhcpd.conf.hosts | sed -n "$OLDMACN p"`
+OLDIP=`echo $OLDMACLINE | cut -d" " -f2|sed "s/;//g"`
+echo $OLDIP
+}
+
 ############# Script to read files contents
 function getOptions {
 Message=$1

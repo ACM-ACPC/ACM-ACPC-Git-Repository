@@ -18,4 +18,4 @@ NEWDHCP=`echo "$tNEWDHCP"|sed 's/-tmp//g'`
 echo "$NEWDHCP" > /tmp/newDHCPFILE
 cp /tmp/newDHCPFILE /acm/adm/etc/dhcp/dhcpd.conf.hosts
 rm /tmp/newDHCPFILE
-service isc-dhcp-server restart
+systemctl restart isc-dhcp-server

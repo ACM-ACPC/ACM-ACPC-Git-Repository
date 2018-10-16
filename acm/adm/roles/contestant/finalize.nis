@@ -1,0 +1,163 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          finalize
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     true
+# Short-Description: Start/stop apache2 web server
+### END INIT INFO
+
+######################################### Finalize script
+# Is used to perform any additional tasks Just after the machine rebooted after
+#   installation
+########################################
+
+cd /tmp
+
+### 10- Download the server public key
+
+wget http://control/prog/common/authorized_keys
+mkdir /root/.ssh
+sudo cp authorized_keys /root/.ssh
+sudo rm authorized_keys
+
+### 30- update the mirror list
+
+ apt-get update
+
+### 40- Install gnome-panel to deal with shortcuts
+	##Disable gnome-initial-setuo
+ 	apt-get -y purge gnome-initial-setup 
+ apt-get -y install autofs debconf-utils portmap Xvfb x11vn firewalld
+ apt-get -y --force-yes install --no-install-recommends gnome-panel
+
+
+### 50-Install 3rd party IDEs
+	wget http://control//prog/common/IDEs/eclipse/eclipse-cpp-oxygen-3a-linux-gtk.tar.gz
+	wget http://control//prog/common/IDEs/eclipse/eclipse-java-oxygen-3a-linux-gtk.tar.gz
+	wget http://control//prog/common/IDEs/intellij/ideaIC-2018.1.4.tar.gz
+	wget http://control//prog/common/IDEs/pycharm/pycharm-community-2018.1.4.tar.gz
+	tar zxf eclipse-cpp-oxygen-3a-linux-gtk.tar.gz
+	tar zxf eclipse-java-oxygen-3a-linux-gtk.tar.gz
+	tar zxf ideaIC-2018.1.4.tar.gz
+	tar zxf pycharm-community-2018.1.4.tar.gz
+	mv eclipse /usr/local
+	mv idea-IC-181.5087.20 /usr/local/idea-IC
+	mv pycharm-community-2018.1.4 /usr/local/pycharm
+
+### 70- Downloading cups configuration files
+ wget http://control/prog/common/cupsd.conf
+ mv cupsd.conf /etc/cups
+
+###75- Disable what is new and welcome screen
+ wget http://control/adm/roles/contestant/custom.conf
+ mv custom.conf /etc/gdm3/custom.conf
+
+### 80- Configure nis client
+ if [ -f /etc/yp.conf ] 
+ then
+  rm /etc/yp.conf
+ fi
+ echo "ACMACPC" > /etc/defaultdomain
+ apt-get -y --force-yes install portmap
+ echo "ACMACPC" > /tmp/nis.seed
+ debconf-set-selections /tmp/nis.seed
+ apt-get -y --force-yes install nis
+ echo "domain ACMACPC server control" > /etc/yp.conf
+ wget http://control/prog/common/nis
+ cp nis /etc/default/nis 
+ rm nis
+ wget http://control/prog/common/nsswitch.conf
+ cp nsswitch.conf /etc
+ rm nsswitch.conf
+ systemctl enable portmap
+ systemctl enable ypbind
+ domainname ACMACPC
+ ypdomainname ACMACPC
+ systemctl restart portmap
+ systemctl restart ypbind
+
+ echo "+::::::" >> /etc/passwd
+ echo "+::::::::" >> /etc/shadow
+ echo "+:::" >> /etc/group
+ ### Chancing the administrator uid to 750 .. anyid less than 1000
+ usermod -u 750 administrator
+ chown -R administrator /home/administrator
+
+
+### 90- Downloading PC2, and extract it
+ wget http://control/prog/common/pc2.tar.gz
+ tar zxf pc2.tar.gz
+ REL=`ls -ld pc2-* | awk ' { print $9 } ' | cut -d'-' -f 2`
+ mv pc2-$REL /usr/local/
+ ln -s  /usr/local/pc2-$REL /usr/local/pc2
+ chmod -x /usr/local/pc2/bin/pc2*
+ chmod +x /usr/local/pc2/bin/pc2team
+ cat /usr/local/pc2/pc2v9.ini | sed 's/localhost/pc2/g' > /tmp/pc2v9.ini
+ cp /tmp/pc2v9.ini /usr/local/pc2/pc2v9.ini
+ rm /tmp/pc2v9.ini
+
+### 100- Downloading gnome-settings-daemon.desktop to set the background img
+ wget http://control/roles/contestant/setbg.desktop
+ wget http://control/roles/contestant/setspan.desktop
+ mkdir -p /home/administrator/.config/autostart
+ cp set*.desktop /home/administrator/.config/autostart
+ rm set*.desktop
+ chmod +x /home/administrator/.config/autostart/set*.desktop
+ wget http://control/prog/common/bg.jpg
+ cp bg.jpg /etc/bg.jpg
+ rm bg.jpg
+ #####Change Login Screen Background
+ wget http://control/prog/common/loginbg.jpg
+ cp loginbg.jpg /etc/loginbg.jpg
+ cp /etc/loginbg.jpg /usr/share/backgrounds/warty-final-ubuntu.png
+ rm loginbg.jpg
+ chown -R administrator /home/administrator/*
+ chown -R administrator /home/administrator/.config
+
+
+### 101- Downloading Kill Process for Netbeans and Codeblocks on Desktop
+ wget http://control/prog/common/killBlock
+ cp killBlock /usr/sbin
+ chmod +x /usr/sbin/killBlock 
+
+
+### 110- Create backup directory , and configure autofs
+ mkdir /backup
+ wget http://control/roles/contestant/backupwork
+ cp backupwork /usr/sbin
+ chmod +x /usr/sbin/backupwork
+ rm backupwork
+
+
+### 130- Get the configProfile, and addit to the startup
+ wget http://control/roles/contestant/configProfile
+ cp configProfile /etc/systemd/system
+ chmod +x /etc/systemd/system/configProfile
+ wget http://control/roles/contestant/configProfile.service
+ mv configProfile.service /lib/systemd/system
+ systemctl enable configProfile.service
+ rm configProfile
+
+### 140 - Setting up environment variables
+echo "SHELL=/bin/bash">>/etc/environment
+echo "export SHELL">>/etc/environment
+
+
+### 150- Remove 
+chmod o-x /usr/bin/x11vnc
+chmod o-x /usr/bin/x11perf     
+chmod o-x /usr/bin/x11perfcomp
+
+## 160- Disable NTP
+timedatectl set-ntp off
+
+### 161- Disable online upgrade check
+rm /etc/update-motd.d/91-release-upgrade
+
+rm finalize
+
+exit 0
