@@ -1,8 +1,12 @@
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp --dport 22 -j DROP
+firewall-cmd --permanent --add-service=mdns
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -m iprange  --dst-range #PRINTSTART#-#PRINTEND# --dport 631 ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p udp -m iprange  --dst-range #PRINTSTART#-#PRINTEND# --dport 631 ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter INTPUT 0 -p tcp -m iprange  --dst-range #PRINTSTART#-#PRINTEND# --dport 631 ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p udp -m iprange  --dst-range #PRINTSTART#-#PRINTEND# --dport 631 ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -d #WEBSERVER# -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -d #CONTROLSERVER# --dport 80 -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p udp -d #CONTROLSERVER# --dport 53 -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -p tcp -d #PC2SERVER# --dport 50002 -j ACCEPT
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -j DROP
+firewall-cmd --reload
